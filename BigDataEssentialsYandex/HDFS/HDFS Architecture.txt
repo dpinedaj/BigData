@@ -1,0 +1,31 @@
+########################################################
+#######-----------HDFS ARCHITECTURE-------------########
+########################################################
+
+
+####Ways to access to HDFS####
+>>CLI
+>>Web UI
+>>Rest API
+>>Curls
+
+####NameNode Architecture####
+
+NameNode stores all of his data in memory
+
+>>For a file that consumes 192 MB of disk space, it's divided by 2 files, one of 128MB (The default block size) and other of 64 MB.
+
+>>Each File represent 3 Namespace objects (1 file node + 2 blocks) and consumes 450 bytes of memory
+
+>>NameNode consumes 150b per object
+
+>>>>>i.e. 10 Pb / (128 Mb * 3(replication)) * 150 bytes  ~= 3.9 Gb of memory usage
+
+
+NameNodes have an edit log to save information and have a recovery point
+
+>>Fsimage -----Snapshot of memory at some point in time which you can replay transactions stored in the edit log
+
+>>Secondary NameNode also called "Checkpoint NameNode" ----Compacts the edit log by creating a new fsimage
+
+

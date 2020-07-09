@@ -1,0 +1,66 @@
+########################################################
+#######------------SOME CONCEPTS----------------########
+########################################################
+
+Replica:
+		Physical data storage on a data node, there are usually several replicas with the same content on different data nodes
+
+Block:
+		Meta-Information storage on a name node, provides information about replica's location and their states
+
+		>>Each block contains a generation state
+
+	>>Block and Replica have their own states
+
+
+
+####DATA REPLICA STATUS####
+
+Finalized Replica:
+		The content is frozen
+
+		>>Preserves read consistency
+
+Replica Being Written to (RBW):
+		Is the state of the last block of an open file
+
+		>>Different data nodes can return to use different set of bytes
+
+		>>Data node and name node meta-information may not match during this state
+
+		>>In case of failure, data node will try to preserve as many bytes as possible.
+
+Replica Waiting to be Recovered (RWR):
+		All Being written replicas after data node failure and recovery.
+
+		>>RWR Replicas will not be in any data node pipeline and will not receive any new data packages.
+
+Replica Under Recovery (RUR):
+		Temporary status usually during client failure.
+
+
+
+####DATA BLOCK STATES####
+
+Under construction state:
+		It's always the last block of a file, it's lenght and GS are mutable.
+
+		>>Contains information of all RWR and RBW
+
+Under Recovery State:
+		When the replica go from RWB or RWR to RUR.
+
+Commited State:
+		When the replica go from RWB to FINALIZED state but not all of them
+
+		>>commited block needs to keep track of RBW replicas
+
+Complete State:
+		All the replicas are in FINALIZED state.
+
+####BLOCK RECOVERY####
+
+>>Concurrency control, consistency guarantee
+>>NameNode gets the list of DataNodes which contains the last block of a file. Then sends a primary DataNode and starts a bock recovery process.
+
+

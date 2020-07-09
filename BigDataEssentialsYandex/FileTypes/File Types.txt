@@ -1,0 +1,176 @@
+########################################################
+#######------------FILE FORMATS-----------------########
+########################################################
+
+
+Format function is to define how to transform raw bytes to proprammatical data structures and viceversa
+
+>>Differ in:
+		>>Space Efficiency
+		>>Encoding & decoding speed
+		>>supported data types
+		>>splittable/monolithic structure
+		>>Extensibility
+
+
+
+##################################
+####----PLAIN TEXT FORMATS----####
+##################################
+
+
+####CSV - Comma Separated Values####
+>> Also TSV - Tab Separated Values
+
+
+>>>>Have a Bad space Efficiency
+
+>>>>Good Encoding and Decoding Speed
+
+>>>>Only receive Strings as data type
+
+>>>>Splittable only if don't have headers
+
+>>>>It's not easy to remove or reorder fields --- Bad extensibility
+
+
+####JSON - JavaScript Object Notation####
+
+>>>>Worse space efficiency than csv
+
+>>>Speed is good enough (100-300 mb/s) in Python
+
+>>>>Support multiply data types (strings, numbers, booleans, maps, lists)
+
+>>>>Splittable if there's 1 document per line
+
+>>>>Can easily add and remove fields and will remain valid and parsable
+
+
+####XML - Extensible markup Language####
+
+>>>>Worse space efficiency than Json
+
+>>>>Slowlier than Json
+
+>>>>Support many data types
+
+>>>>Splittable
+
+##################################
+####------BINARY FORMATS------####
+##################################
+
+####Sequence File####
+>>>>Storing the intermediate data in MapReduce Computations
+
+>>>>Space efficiency moderate to good--- If use plug compression can improve it
+
+>>>>Good encoding and decoding speed --- Primivite values are copied as they are
+
+>>>>Support any type implemented in the appropiate interfaces
+
+>>>>Splittable via sync markers
+
+>>>>Not extensibility, you may include a version of every file
+
+
+####Avro ####
+>Is a format and a support library
+>Needs an Schema
+>Hold Balance Between efficiency and flexibility
+
+>>>>Space Efficiency moderate to good --- Can be improved using compression
+
+>>>>Good Speed with code generation
+
+>>>>Support data types as a Json
+
+>>>>Splittable using sync marker
+
+>>>>Extensibility and maintainability are design goals for Avro
+
+
+
+
+############################
+###------CONCEPTS--------###
+############################
+
+>To save input and output operations
+	>Not Reading the data necessary for the processing
+	>Using superior compression Schemas
+
+
+###Row-based & Column-Based formats###
+
+>>With column-based format you can scan only the necessary data
+
+>>The bad of columns format is the row assembly
+		>>To reconstruct the full row you must to perform lookups from all the columns
+
+
+
+###RCFile Format --- Record Columnar Format###
+
+>>Spans multiple HDFS blocks
+
+>>Row group
+	
+		>>Sync marker
+		>>Metadata
+		>>Column data
+
+>>Good Space Efficiency, data itself is compressed on the block level
+
+>>Speed is gained by reducing input and output operations, but not by reading columns
+
+>>RCFiles are untyped, values are bytes
+
+>>Splittable by sync markers
+
+>>Not extensibility, Hive rewrites data on schema change
+
+
+### Parquet ###
+
+>>Most sophisticated column format in hadoop
+
+>>Support nested and repeated data
+
+>>Exploits many columnar optimizations
+
+>>Optimizes write path
+
+
+
+################################
+###---KINDS OF COMPRESSION---###
+################################
+
+##Block-Level Compression##
+
+>>Used in SequenceFiles, RCFiles, Parquet
+
+>>Applied within a block of data
+
+
+##File-level compression "ZIP" ##
+
+>>Applied to the file as a whole
+
+>>Hinders an ability to navigate through file
+
+>>Codecs for Hadoop:--
+					>>Gzip
+					>>BZip2
+					>>LZO
+					>>Snappy
+
+
+>>>>Compression is util when HDFS has less transfer flow than the App
+"I/O - bound", depends of code performance.
+
+
+
+

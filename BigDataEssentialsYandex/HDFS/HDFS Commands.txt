@@ -1,0 +1,43 @@
+########################################################
+#######------------SOME CONCEPTS----------------########
+########################################################
+
+####Help Commands####
+
+>>hdfs dfs -help
+
+>>hdfs dfs -usage <utility_name>
+
+>>hdfs dfs -ls -R -h <Path>  -----------------Show the content of a directory
+
+>>hdfs dfs -du -h <Path> ---------------------Show the disk usage of the files in a directory
+
+>>hdgs dfs -df -h <Path> ---------------------Brings a summary for the whole file system space usage
+
+>>hdfs dfs -mkdir -p <Path> ------------------Make a directory and "-p" brings the permissions to make subdirectory and parents.
+
+>>hdfs dfs -rm -r <Path or file> -------------Remove path or file (-r for path)
+
+>>hdfs dfs -rm -r -skiptrash <Path or file> --Remove permanently a path or file, ignoring the thrash folder
+
+>>hdfs dfs -mv -r <Path or file> <Path2 or file2 loc> ---Move or rename a path or a file
+
+>>hdfs dfs -put <source loc> <HDFS destination> ---Move a file from a local system to HDFS
+
+####HDFS Read Commands####
+
+>>hdfs dfs -cat <File> | head -n ------------Shows "n" first lines
+
+>>hdfs dfs -cat <File> | tail -n ------------Shows "n" last lines
+
+>>hdfs dfs -tail(or head) <File> ------------Show the first or last kilobyte of the file
+
+>>hdfs dfs -get <File or Folder> ------------Download files from HDFS to Local File System
+
+>>hdfs dfs -getmerge <Files to merge> <Name of new File> ----Merge a list of files into a local file.
+
+>>time hdfs dfs -setrep -w n <File> ---------Provides API to decrease and increase replication factor "n"
+
+>>hdfs fsck <Path> -files -blocks -locations ---File system checking utility --You can request a NameNode to provide you with the info 																						about fileblocks and allocations
+
+>>hdfs dfs -fin <Path> -name <Pattern> -iname <pattern> ----Can search by a pattern recursively in the folder or can look for file signal-- 															Can combine expressions
