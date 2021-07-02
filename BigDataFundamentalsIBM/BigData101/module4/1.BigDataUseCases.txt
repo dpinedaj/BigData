@@ -1,0 +1,53 @@
+High Value Big Data Use Cases:
+
+    -> Big Data Exploration to improve business knowledge:
+        -> The information usually is in different sections of the companies, big data will mine data from each one and
+            centralize all the data in an unified view to extract value from it
+        -> Example:
+            -> Reducing Traffic Congestion:
+                -> The data are from cammeras, weather, vehicles, the idea is to analyze streaming real-time data
+                    gathered from the different sources, unify them and analyze
+                -> Results: Enables ability to analyze and predict traffic faster and more accurately than ever before
+                            Provides new insight into mechanism that affect a complex traffic system
+                            Smarter, more efficient, and more environmentally friendly traffic
+
+    -> Enhanced 360 degree view of the customer:
+        -> Relationship between customer and organization is closets than ever, the Idea is to capture the Customer Information
+            to improve engagement, revenue and loyalty
+        -> Example:
+            -> Prepare for Increased customer rush times
+            -> Stock up customer preferences
+            -> Plan for customer sprending habits (sales, coupons, product exposure)
+            Results:
+                -> Increased revenue
+                -> Increased efficiency
+                -> Build customer loyalty
+
+    -> Security/Intelligence Extension to lower risk, detect frauds and monitor systems
+        -> Avoid high-tech crimes, cyber-based terrorism, espionage, computer intrusions, fraud cases
+        -> Improving Security:
+            -> Analyze under-leveraged data:
+                -> Emails
+                -> Social media
+                -> Search results
+                -> Prepare for threats
+            -> Results:
+                -> Increased security
+                -> Improved threat prediction
+                -> Increase in customer confidence
+                -> Deterrence of potential threats
+
+    -> Operations Analysis, by results:
+        -> Analyzing machine data, signals, sensors and logs
+        -> This type of data is growing at an exponential rate and it comes in large volume and a variety of formats
+        -> Using Complex analysis, and real-time analysis we can watch operations, customer experience, transactions and behavior
+        -> Example:
+            -> Aviation, improving security
+            -> Collect and analyze massive amounts of data from plane's turbine, sensors and GPS
+            -> Visualize data with complex big data analysis
+
+            -> Results:
+                -> Real-time visibility into operations of the plane
+                -> Improved customer experience
+                -> Increased efficiency of plane through optimization of fuel usage
+                -> Real-time analysis for irregularities that may occur

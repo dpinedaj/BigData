@@ -1,0 +1,37 @@
+Components and Ecosystems of Big Data:
+    -> Techniques for Analyzing Data:
+        -> A/B Testing
+        -> Machine Learning
+        -> Natural Language Processing (NLP)
+    -> Big Data Technologies:
+        -> Business Intelligence
+        -> Cloud Computing
+        -> Databases (Structured + Un-Structured)
+    -> Visualization:
+        -> Charts
+        -> Graphs
+        -> Other Displays
+
+What is Hadoop:
+    -> Open source framework used to store and process huge amounts of data. 
+        It is implemented in several distinct, specialized modules:
+        -> Storage: Employing the hadoop File System (HDFS)
+        -> Resource management and scheduling for computational tasks
+        -> Distributed processing programming model based on MapReduce
+        -> Common utilities and software libraries necessary for the entire Hadoop platform
+
+    -> High scalable storage plaform designed to process very large data set across hundreds to thousands of
+        computing nodes that operate in parallel
+    -> Hadoop provides a cost effective storage solution for large data volumes with no format requirements
+    -> MapReduce, the programming paradigm that allows for this massive scalability, is the heart of Hadoop
+
+Data Warehouses:
+    -> Big data is best though of as a platform
+    -> Data Warehouses:
+        -> deliver deep insight with advanced in-database analytics and operational analytics
+        -> Provide online analytic processing (or OLAP)
+
+    -> Modernization:
+        -> Pre-processing (separate irrelevant data by relevant data in the landing zone)
+        -> Offloading that irrelevant data to the desired place
+        -> Exploration, take the relevant data to some analysis and ordering and extract high Value Data
