@@ -1,0 +1,25 @@
+"The basic idea behind the phrase 'Big Data' is that everything we do is increasingly
+leaving a digital trace (or data), which we can use and analyze to become smarter 
+The driving forces in this brave new world are access to ever-increasing volumes of data and our ever-increasing
+technological capability to mine that data for commercial insights"
+
+"Big Data is high-volume, high-velocity and/or high-variety information assets that demand cost-effective,
+innovative forms of information processing that enable enhanced insights, decision making, and
+process automation"
+
+"Big Data refers to the dynamic, large and disparate volumes of data beign created by people, tools
+and machines; it requires new, innovative and scalable technology to collect, host and analytically
+process the vast amount of data gathered in order to derive real-time business insights that relate to consumers,
+risk, profit, performance, productivity management and enhanced shareholder value"
+
+"Big Data is a collection of data from traditional and digital sources inside and outside your company
+that represents a source for ongoing discovery and analysis"
+
+
+
+>> Velocity: Speed of the Data 
+>> Volume: Scale of the data 
+>> Variety: Diversity of the data
+>> Veracity: Certainty of the Data
+
+++

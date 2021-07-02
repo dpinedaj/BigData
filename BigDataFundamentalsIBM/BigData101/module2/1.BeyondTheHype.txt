@@ -1,0 +1,22 @@
+Why is everyone talking about Big Data:
+    -> More data has been created in the past two years than in the entire previous history of human kind.
+    -> By 2020, about 1.7 megabytes of new information will be created every second for every human beign in the world
+    -> By 2020, the data we create and copy will reach around 35 zettabytes (7.9 zettabytes at 2015)
+
+1 zettabyte = 1024 exabytes
+1 exabyte = 1024 petabytes
+1 petabyte = 1024 terabytes
+1 terabyte = 1024 gigabytes
+
+
+-> Cloud computing was a need to allows companies to process large data and complicated mathematical calculus over data
+
+-> Major sources of Big Data:
+    -> People-generated data
+    -> Machine-generated data
+    -> Business-generated data
+
+-> Big Data skills include disconvering and analysing trends that occur in Big Data
+
+-> Big Data comes in three forms:
+    -> Structured, Unstructured and semi-structured

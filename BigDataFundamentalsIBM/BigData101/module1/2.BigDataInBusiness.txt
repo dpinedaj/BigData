@@ -1,0 +1,8 @@
+How is big data impacting business and people?
+
+
+-> Recommendation Engines:   Amazon, Netflix, Spotify
+-> Virtual Assistants: Siri, Google assistant, Alexa
+-> Key basis of competition, impacting customer relationships, product development, organize operations...
+-> e-commerce
+-> IoT

@@ -1,0 +1,37 @@
+Key Aspects of a Big Data Platform:
+    -> Integration:
+        -> Incorporate parts into a whole
+    -> Visualization:
+        -> Help the people to see the date with more simplicity
+        -> An example is displaying a temperature map by region
+    -> Analysis:
+        -> A platform that takes in account how user is behaving on the website
+            and bring up items that are based on a user's interest
+    -> Workload Optimization:
+        ->
+    -> Security:
+        -> Data privacy is very important to reject the attemps of access or collect of sensitive data
+    -> Governance:
+        -> Autometd Integration: Easy access to the data wherever it resides
+        -> Visual content: that is, easy categorization, indexing and discovery withing big data to optimize its usage
+        -> Agile Governance: Definition and execution of governance appropiate to the value of the data and its intended use
+
+Applications:
+    -> Hadoop
+    -> Oozie
+    -> Flume
+    -> Hive
+    -> HBase
+    -> Apache Pig
+    -> Apache Spark
+    -> MapReduce and YARN
+    -> Sqoop
+    -> ZooKeeper
+    -> Text analytics   
+
+Data Science:
+    -> Is the process of cleaning, mining and analyzing data to derive insights of value from it
+    -> The data size is less important
+    -> One can use data of all sizes, small, medium and big data, that is related to a business or scientific case
+    -> Insights are extracted through a combination of exploratory data analysis and modeling.
+    
