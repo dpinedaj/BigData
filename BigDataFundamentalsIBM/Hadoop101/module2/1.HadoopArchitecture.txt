@@ -1,0 +1,50 @@
+Terminology:
+    -> Node: Simple computer
+    -> Rack: A collection of 30 or 40 nodes that are physically stored close together and are all
+        connected to the same network switch (the network bandwidth between the nodes in a rack is greather than
+            the network bandwith between different racks)
+    -> Cluster: Collection of racks
+
+
+Pre Hadoop 2.2 architecture:
+
+    -> Distributed File System (HDFS or a cloud one):
+        -> Runs on top of the existing file system:
+            -> Not POSIX compliant
+            -> Designed to tolerate high component failure rate
+        -> Designed to handle very large files
+        -> Uses blocks to store a file or parts of a file:
+            -> Not the same as the operating system's file blocks
+            -> 64 mb by default, recommended is 128 MB (BigInsights default)
+            -> Size of a file can le larger than any single disk in the clusters because blocks are spread across multiple nodes
+                in the cluster
+            -> If a chunk of the files is smaller than the HDFS block sized, only the needed space is used
+            -> Blocks work well with replication:
+                -> Block with data are replicated to multiple nodes
+                -> Allows for node failure without data loss
+    -> MapReduce Engine (Framework for performing calculations in the file system)
+        -> Inspired by a paper Google published on the MapReduce technology
+        -> Processes huge datasets for certain kinds of distributable problems using a large number of nodes
+        -> a MapReduce program consists of map and reduce functions:
+            -> Tasks run in parallel
+
+Kinds of Nodes:
+    -> NameNode:
+        -> Only one per Hadoop cluster
+        -> The metadata for a file is stored at the NameNode
+        -> Is responsible for the filesystem namespace, to compensate for the fact that there is only one NameNode, one
+            should configure the NameNode to write a copy of its state information to multiple locations, such as a local disk and a NFS mount
+        -> Keeps the entire filesystem metadata in memory
+    -> DataNode:
+        -> Many per Hadoop cluster
+        -> Blocks from different files can be stored on the dame DataNode
+        -> Manages blocks with data and serves them to clients
+    -> JobTracker:
+        -> Manages MapReduce V1 Jobs, there is one one on the cluster
+        -> Receives job requests submitted by the client
+        -> Schedules and monitors MapReduce jobs on TaskTrackers, direct task to the TaskTracker where the data resides
+    -> TaskTracker:
+        -> Many per Hadoop cluster
+        -> Each one spawns java virtual machines to run your map
+        -> Communicates with the JobTracker via heartbeat messages
+        -> Reads blocks from datanodes

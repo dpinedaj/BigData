@@ -1,0 +1,28 @@
+What is Hadoop?
+    -> When you need to scale the processing of data as fast
+        as your computer can't handle, is a good idea
+        to use hadoop to handle scalability enough fast as
+        a cluster expansion
+    -> Open source framework which uses Map Reduce technologies
+        is optimized to handle massive quantities of data which could
+        be structured, unstructured or semi-structured
+        using commodity hardware, that is, relatively inexpensive computers
+    -> Only allows batch processing
+    -> In place updates are not possible in Hadoop, but appends to
+        existing data is supported
+    -> Replicates its data across different computers, so that if one goes down,
+        the data is processed on one of the replicated computers
+    -> Is not suitable for OnLine Transaction Processing, OnLine Analytical Processing
+        or Decision Support System workloads
+        (OLTP, OLAP, DSS) where data is randomly accessed like a relational database
+    -> With the help of InfoSphere Streams, Hadoop can be used with data-at-rest as well as data-in-motion. 
+Hadoop Open Source projects:
+    -> eclipse (Java)
+    -> Lucene
+    -> HBASE
+    -> Hive
+    -> Pig
+    -> Spark
+    -> Avro
+    -> Zookeeper
+    -> UIMA
