@@ -1,0 +1,36 @@
+Hadoop 2.2 Architecture:
+
+    -> Provides YARN (Yet Another Resource Negotiator):
+        -> Referred to as MapReduce V2
+        -> Resource manager and scheduler external to any framework
+        -> DataNodes still exist
+        -> JobTracker and TaskTrackers no longer exist
+
+    -> YARN:
+        -> Provide generic scheduling and resource management
+            -> Support more than just MapReduce and more than just batch processing
+        -> More efficient scheduling and workload management
+            -> No more balancing between map slots and reduce slots
+
+    -> New Architecture:
+        -> In this setup there are now two NameNodes, one active and one standby
+        -> Now there are JournalNodes. There must be al least three and there must be an odd number
+            -> The JournalNodes decides which of the NameNodes is to be the active one and if the active NameNode has
+                been lost and whatever the backup NameNode should take over
+        -> Can be different NameNodes acting on different Namespaces, using the same DataNodes to store the data blocks
+
+
+    -> Example of writting in HDFS:
+        1. The client submits a "create" request to the NameNode
+        2. The NameNode checks that the file does not already exist and the client has permissions to write the file.
+        3. If 2 succeeds, the NameNode determines the DataNode to where the first block is to be written, if the client
+            is running on a DataNode, it will try to place it there. Otherwise, it chooses DataNode at random.
+        4. By Default data is replicated to two other places in the cluster. A pipeline is built between the three DataNodes
+            that make up the pipeline, the second DataNode is a randomly chosen node on a rack other than of the first replica
+            of the block, this is to increase redundancy
+        5. The final replica is placed on a random node within the same rack as the second replica
+        6. The data is piped from the second DataNode to the third, to ensure the write was successful before continuing.
+        7. Acknowledgment packets are sent from the third DataNode to the second, from the second to the first and from the first
+            to the client.
+        8. This process occurs for each of the blocks that makes up the file.
+        9. When the last piece is written, the NameNode checks that te blocks are at least minimally replicated before responding
