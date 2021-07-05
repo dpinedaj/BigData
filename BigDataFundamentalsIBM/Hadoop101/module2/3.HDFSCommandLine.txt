@@ -1,0 +1,18 @@
+HDFS file command interface:
+    -> hdfs dfs <args>
+    -> FS shell take path URIs as arguments, scheme://authority/path
+    -> Scheme:
+        -> For HDFS is hdfs
+        -> For the local filesystem is file
+    -> Defaults are taken from the core-site.xml configuration file
+
+    -> Examples:
+        -> hdfs dfs -ls: listing directory
+        -> hdfs dfs -cp file:///sampleData/spark/myfile.txt hdfs://rvm.svl.ibm.com:8020/user/spark/test/myfile.txt
+        -> Generic POISX-like commands
+            -> cat, chgrp, chmod, chown, cp, du, ls, mkdir, mv, rm, stat, tail
+        -> Some HDFS-specific commands
+            -> copyFromLocal, copyToLocal, get, getmerge, put, setrep
+        
+    -> If you want to operate over an entire tree, use the -R option
+    -> If you want to block until the job is done, use the -w option

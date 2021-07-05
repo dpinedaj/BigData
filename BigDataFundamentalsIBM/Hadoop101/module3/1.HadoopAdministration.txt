@@ -1,0 +1,31 @@
+Hadoop Administration:
+    -> Adding and removing nodes from the cluster:
+        -> /etc/hosts on both master and child nodes should be updated prior to adding child nodes
+        # TODO Check how to add or remove nodes using the CLI
+
+    -> Verifying cluster health:
+        -> hdfs dfsadmin -report
+
+    -> Stopping/starting  components/services
+        -> Stopping some can save resources
+        # TODO Check how to do using the CLI
+
+    -> Configuring Hadoop
+        -> hadoop-env.sh
+        -> core-site.xml
+        -> hdfs-site.xml
+        -> mapred-site.xml
+        -> hadoop-metrics.properties
+        -> log4j.properties
+
+    -> Setting up rack topology
+        -> Can be defined by script which specifies which node is on which rack
+        -> Script is referenced in topology.script.file.name property in core-site.xml
+        -> Example of property:
+            <property>
+                <name>topology.script.file.name</name>
+                <value>/opt/ibm/biginsights/hadoop-conf/rack-aware.sh</value>
+            <property>
+        -> The topology script receives as arguments one or more IP addresses of nodes in the cluster.
+            It Returns on stdout a list of rack names, one for each input.
+            The input and output order must be consistent
