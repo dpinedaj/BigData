@@ -1,0 +1,8 @@
+MapReduce:
+    -> MapReduce philosophy
+        -> Map:
+            -> Master node partitions the input into smaller sub-problems
+            -> Distributes the sub-problems to the worker nodes
+        -> Reduce:
+            -> Master node then takes the answers to all the sub-problems
+            -> Combines them in some way to get the output

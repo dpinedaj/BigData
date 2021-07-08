@@ -1,0 +1,37 @@
+Pig and Hive:
+    -> Both translate high-level languages into MapReduce
+    -> Significant reductions in program size over Java
+    -> All provide points of extension to cover gaps in functionality
+    -> All provide interoperability with other languages
+    -> None support random reads/writes or low-latency queries
+
+
+Pig:
+    -> Developed by Yahoo
+    -> Can operate on complex, nested data structures
+    -> Schema optional
+    -> Relationally complete
+    -> Turing complete when extended with Java UDFs
+
+    Running Pig:
+        -> Script:
+            -> pig scriptfile.pig
+        -> Grunt
+            -> pig (to launch command line tool)
+        -> Embedded
+            -> Call in to Pig from Java
+        -> Execution environments:
+            -> local
+            -> distributed
+Hive
+    -> Developed by Facebook
+    -> Declarative language (SQL dialect)
+    -> Schema non-optional but data can have many schemas
+    -> Relationally complete
+    -> Turing complete when extended with Java UDFs
+
+    Running Hive:
+        -> Hive Shell
+            -> Interactive   -  hive
+            -> Script        -  hive -f myscript
+            -> Inline        -  hive -e 'SELECT * FROM mytable'

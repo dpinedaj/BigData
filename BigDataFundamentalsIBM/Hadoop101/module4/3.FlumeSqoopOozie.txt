@@ -1,0 +1,45 @@
+Flume:
+    -> Service for moving large amounts of data around a cluster soon after the data is produced
+    -> Primary use case
+        -> Gathering log files from every machine in a cluster
+        -> Transferring the data to a centralized persistent store
+            -> e.g. HDFS
+    -> It Create data flows by building up chains of logical nodes and connecting them to sources and sinks
+        -> i.e. If you want to move data from Apache access log into HDFS, you create a source by tailing access.log
+            and use a logical node to route this to an HDFS sink
+    -> Three tier design:
+        -> Agent tier:
+            -> it is co-located with the source that is to be moved
+        -> Collector tier:
+            -> Consist of perhaps multiple collectors each of wich collects data comming in from multiple agents
+                and forwards it on to the storage tier.
+        -> Storage tier:
+            -> Consist of a file system such as HDFS
+
+Sqoop:
+    -> Transfers data between Hadoop and relational databases
+    -> Uses MapReduce to import and export the data
+    -> Uses JDBC to access the relational system
+    -> It access the database in order to understand the schema, it then generates a MapReduce application
+        to import or export the data
+    -> When you use sqoop to import data into Hadoop, Sqoop generates a Java class that encapsulates one row
+        of the imported table. You can access to the source code for the generate class and it allow you to
+        quickly develop any other MapReduce applications that use the records that Sqoop stored into HDFS
+
+
+Oozie - workflows:
+    -> Manage Hadoop jobs
+    -> Workflows:
+        -> Collections of actions arranged in a Direct Acyclic Graph (DAG)
+            -> There is a control dependency from one action to a second action
+            -> Second action cannot run until the first action completes
+
+        -> Definitions are written in hPDL
+            -> An XML Process Definition language
+            -> Stored in a file called workflow.xml
+
+    -> Workflow actions start jobs in remote systems
+        -> The remote systems callback Oozie to notify that the action has completed
+    
+    -> The coordinator component can invoke workflows based upon a time interval, for example every 15 minutes
+    -> Can be invoked upon the availability of specific data
