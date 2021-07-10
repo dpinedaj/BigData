@@ -1,0 +1,28 @@
+Spark Jobs and shell
+    -> Spark jobs can be written in Scala, Python or Java
+    -> Spark shells for Scala and Python
+    -> APIs are available for all three
+    -> Must adhere to the appropiate version for each Spark release
+    -> Spark's native language is Scala, so it is natural to write Spark applications using Scala
+
+Brief overview of Scala
+    -> Everything is an Object
+        -> Primitive types such as numbers or boolean
+        -> Functions
+    -> Numbers are objects
+        -> 1 + 2 * 3 / 4  -> (1).+(((2).*(3)./(x)))
+        -> Where the +, *, / are valid identifiers in Scala
+    -> Functions are objects
+        -> Pass functions as arguments
+        -> Store them in variables
+        -> Return them from other functions
+    -> Function declaration
+        -> def functionName([list of parameters]): [return type]
+    
+    -> Anonymous functions
+        -> Are functions without a name created for one-time use to pass to another function
+        -> left side of the right arrow => is where the argument resides
+        -> Rigue side of the arrow is the body of the function
+
+        -> example:
+            (x) => println(s"Hello $x") 

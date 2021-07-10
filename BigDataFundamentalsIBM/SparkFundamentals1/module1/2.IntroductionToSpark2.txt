@@ -1,0 +1,36 @@
+Spark Stack:
+    -> Spark Core:
+        -> general purpose system providing scheduling, distributing, and monitoring of the applications
+            across a cluster. Then you have the components on top of the core that are designed to interoperate
+            closely, letting the users combine them, just like any library in a software
+        -> Any improvement in the core will improve the higher level layers
+        -> Is designed to scale up from one to thousands of nodes.
+        -> Can run over a variety of cluster managers including Hadoop YARN and Apache Mesos
+    -> Spark SQL
+        -> Designed to work with the Spark via SQL and HiveQL
+        -> Allow to intermix SQL with spark programming language supported by Python, Scala and Java
+    -> Spark Streaming
+        -> provides processing of live streams of data
+        -> Matches that of the Sparks Core's API, making it easy for developers to move between applications
+            that processes data stored in memory vs arriving in real-time.
+        -> Provides the same degree of fault tolerance
+    -> MLlib
+        -> Provides multiple types of machine learning algorithms
+        -> All the algorithms are designed to scale out across the cluster as well
+    -> GraphX
+        -> APIs to manipulate graphs and performing graph-parallel computations
+
+Resilient Distributed Datasets (RDD)
+    -> Spark primary abstraction
+    -> Distributed collection of elements
+    -> Parallelized across the clusters
+    -> Two types of RDD operations
+        -> Transformations
+            -> Creates a DAG
+            -> Lazy evaluations
+            -> No return value
+        -> Actions
+            -> Performs the transformations and the action that follows
+            -> Returns a value
+    -> Fault tolerance
+    -> Caching

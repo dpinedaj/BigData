@@ -1,0 +1,38 @@
+Big Data and Spark:
+    -> Data is increasing in volume, velocity, variety
+        -> Data is everywhere, social media for example (twitter, facebook, sms, and others)
+    -> The need to have faster results from analytics becomes increasingly important
+        -> Don't want to wait hours for a batch
+    -> Apache Spark is a computing platform designed to be fast and generl-purpose, and easy to use
+        -> Speed
+            -> In-memory computations
+                -> Allos for a much faster processing and response
+            -> Faster than MapReduce for complex applications on disk
+        -> Generality
+            -> Covers a wide range of workloads on one system
+            -> Batch applications (e.g. MapReduce)
+            -> Iterative algorithms
+            -> Interactive queries and streaming
+        -> Ease of use
+            -> APIs for Scala, Python, Java
+            -> Libraries for SQL, machine learning, streaming, and graph processing
+            -> Runs on Hadoop clusters such Hadoop YARN or Apache Mesos or as a standalone with its own scheduler
+
+Who uses Spark and why
+    -> Parallel distributed processing, fault tolerance on commodity hardware, scalability, 
+        in-memory computing, high level APIs, etc.
+    -> Spark adds to the concept with aggressively cached in-memory distributed computing
+    -> Saves time and money
+    -> Data scientist:
+        -> Analyze and model the data to obtain insight using ad-hoc analysis
+        -> Transforming the data into a useable format
+        -> Statistics, machine learning, SQL
+    -> Engineers:
+        -> Develop a data processing system or application
+        -> Inspect and tune their applications
+        -> Programming with the Spark's API
+    -> Everyone else:
+        -> Ease of use
+        -> Wide variety of functionality
+        -> Mature and reliable
+
