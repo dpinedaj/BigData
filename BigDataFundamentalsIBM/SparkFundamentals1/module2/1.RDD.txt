@@ -1,0 +1,40 @@
+Resilient Distributed Dataset (RDD)
+    -> Fault tolerant collection of elements that can be operated on in parallel
+    -> immutable
+    -> Three methods for creating RDD
+        -> Parallelizing an existing collection
+        -> Referencing a dataset
+        -> Transformation from an existing RDD
+    -> Two types of RDD operations
+        -> Transformations
+            -> Return a pointer to the RDD created
+            -> makes updates to the graph, but nothing actually happens until some action is called
+        -> Actions
+            -> Return values that comes from the action
+    -> Dataset from any storatge supported by Hadoop
+        -> HDFS
+        -> Cassandra
+        -> HBase
+        -> Amazon S3
+        -> etc.
+    -> Types of file supported
+        -> Text files
+        -> SequenceFiles
+        -> Hadoop InputFormat
+
+    -> Create an RDD:
+        >>> val data = 1 to 10000
+        >>> val distData = sc.parallelize(data)
+        >>> distData.filter(...)
+        >>> val readmeFile = sc.textFile("Readme.md")
+
+    -> RDD Operations Basics:
+        >>> val lines = sc.textFile("hdfs://data.txt")
+        >>> val lineLengths = lines.map(s => s.length)
+        >>> val totalLengths =  lineLengths.reduce((a, b) => a + b)
+
+        MapReduce example:
+            >>> val wordCounts = textFile.flatMap(line => line.split(" "))
+                    .map(word => (word, 1))
+                    .reduceByKey((a, b) => a + b)
+            >>> wordCounts.collect()

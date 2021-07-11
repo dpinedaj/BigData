@@ -1,0 +1,30 @@
+RDD
+    -> Persistence
+        -> Each node stores any partitions of the cache that it computes in memory
+        -> Reuses them in other actions on that dataset (or datasets derived from it)
+            -> Future actions are much faster (often by more than 10x)
+        -> Two methods for RDD persistence
+            -> persist()
+            -> cache() -> Essentially just persist with MEMORY_ONLY storage
+        -> Storage level options:
+            -> MEMORY_ONLY
+            -> MEMORY_AND_DISK
+            -> MEMORY_ONLY_SER
+            -> MEMORY_AND_DISK_SER
+            -> DISK_ONLY
+            -> MEMORY_ONLY_2, MEMORY_AND_DISK_2   (same as above but replicate each partition on two cluster nodes)
+            -> OFF_HEAP (Experimental) -> Uses Tachyon
+                -> reduces garbage collection overhead and allows the executors to be smaller and to share a pool of memory
+                
+    -> Shared Variables
+        -> When a function is passed from the driver to a worker, normally a separate copy of the
+            variables are used
+        -> Two types of shared variables:
+            -> Broadcast variables:
+                -> Read-only copy on each machine
+                -> Distribute broadcast variables using efficient broadcast algorithms
+            -> Accumulators:
+                -> Variables added through an associative operation
+                -> Implement counters and sums
+                -> Only the driver can read the accumulators value
+                -> Numeric types accumulators. Extend for new types

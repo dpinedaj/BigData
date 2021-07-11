@@ -1,0 +1,27 @@
+RDDS
+    -> Direct Acyclic Graph (DAG)
+        >>> linesLength.toDebugString
+            -> Display the series of transformation that Spark will go through once an action is called
+    -> What happens when an action is executed
+        -> Code:
+                // Creating the RDD
+            >>> val logFile = sc.textFile("hdfs://...")
+                -> The data is partitioned into different blocks across the cluster
+                -> The driver sends the code to be executed on each block
+
+                // Transformations
+            >>> val errors = logFile.filter(_.startsWith("ERROR"))
+            >>> val messages = errors.map(_.split("\t")).map(r => r(1))
+                // Caching
+            >>> messages.cache()
+                // Actions
+            >>> messages.filter(_.contains("mysql")).count()
+            >>> messages.filter(_.contains("php")).count()
+                -> The data don't need to read twice the data from hdfs, the second time it reads it from the cache
+        
+
+        -> Initially load the log from the hadoop file system, after it filter out the messages
+            within the log errors, Before you invoke some action on it, you tell it to cache the
+            filtered dataset - it doesn't actually cache it yet as nothing has been done up until this point
+            Then you do more filters followed by the count action.
+        -> 
