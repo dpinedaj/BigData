@@ -1,0 +1,36 @@
+SparkContext
+    -> The main entry point for Spark functionality
+        -> Can be used to create RDDs and shared variables on the cluster
+    -> Represents the connection to a Spark cluster
+    -> In the Spark shell, the SparkContext, sc, is automatically initialized for you to use
+    -> In a Spark program, import some classes and implicit conversions into your program:
+        >>> import org.apache.spark.SparkContext
+        >>> import org.apache.spark.SparkContext._
+        >>> import org.apache.spark.SparkConf
+
+Linking with Spark
+    -> Scala
+        -> Dependencies
+            -> Compatible Scala to write dependencies
+                -> e.g Spark 1.1.1 uses Scala 2.10.
+            -> Maven dependency on Spark
+                -> groupId = org.apache.spark
+                -> artifactId = spark-core_2.10
+                -> version = 1.1.1
+            -> To access to HDFS cluster
+                -> groupId = org.apache.hadoop
+                -> artifactId = hadoop-client
+                -> version = <your-hdfs-version>
+
+Initializing Spark
+    -> Scala:
+        -> Build a SparkConf object that contains information about your application
+            >>> val conf = new SparkConf().setAppName(appName).setMaster(master)
+            -> The appName parameter -> Name for your application to show on the cluster UI
+            -> the master parameter -> is a Spark, Mesos, or YARN cluster URL 
+                                        (or a special "local" string to run in local mode)
+                -> In testing, you can pass "local" to run Spark
+                -> local[16] will allocate 16 cores
+                -> In production mode, do not hardcode master in the program. Launch with spark-submit and provide it there
+        -> Then you will need to create the SparkContext object
+            >>> new SparkContext(conf)

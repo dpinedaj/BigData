@@ -2,8 +2,8 @@ version: "3.0"
 services:
     spark-runtime:
         build: .
-        image: pyspark
-        container_name: pyspark-daniel
+        image: spark-almond
+        container_name: spark-daniel
         volumes:
             - .:/data
         ports:
