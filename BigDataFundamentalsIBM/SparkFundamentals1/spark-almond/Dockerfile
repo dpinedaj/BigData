@@ -1,5 +1,13 @@
 FROM almondsh/almond
 
+USER root
+RUN \
+  apt-get update && \
+  apt-get upgrade -y && \
+  apt-get install -y openjdk-11-jdk && \
+  apt-get install -y maven && \
+  rm -rf /var/lib/apt/lists/*
+
 # COPY *.ipynb ./
 COPY ./jars/*.jar libs/
 ADD https://repo1.maven.org/maven2/com/idealista/format-preserving-encryption/1.0.0/format-preserving-encryption-1.0.0.jar \

@@ -1,0 +1,20 @@
+Passing Functions to Spark
+    -> three methods
+        -> Anonymous functions 
+            ->  (x: Int) => x + 1
+        -> Static methods in a global singleton object
+            -> object MyFunctions {
+                def func1 (s: String): String = (...)
+            }
+        -> Passing by reference
+            -> To avoid sending the entire object, consider copying the function to a local variable
+                Example:
+                    -> val field = "Hello"
+                    (AVOID):
+                        def doStuff(rdd: RDD[String]): RDD[String] = {rdd.map(x => field + x)}
+                    (CONSIDER):
+                        def doStuff(rdd: RDD[String]): RDD[String] = {
+                            val field_ = this.field
+                            rdd.map(x => field_ + x)
+                        }
+
