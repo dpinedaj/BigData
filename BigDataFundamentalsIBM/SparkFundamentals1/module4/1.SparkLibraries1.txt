@@ -1,0 +1,65 @@
+Spark Libraries
+    -> Extension of the core Spark API
+    -> Improvements made to the core are passed to these libraries
+    -> Little overhead to use with the Spark core
+
+Spark SQL
+    -> Allows relational queries expresed in:
+        -> SQL
+        -> HiveQL
+        -> Scala
+    -> SchemaRDD
+        -> Row objects
+        -> Schema
+        -> Created from:
+            -> Existing RDD
+            -> Parquet file
+            -> JSON dataset
+            -> HiveQL against Apache Hive
+    -> Supports Scala, Java and Python
+
+    -> SQLContext
+        -> Created from a SparkContext
+        -> Scala:
+            >>> val sc: SparkContext
+            >>> val sqlContext = new org.apache.spark.sql.SQLContext(sc)
+        -> Java
+            >>> JavaSparkContext sc = ...;
+            >>> JavaSQLContext sqlContext = new org.apache.spark.sql.api.java.JavaSQLContext(sc);
+        -> Python 
+            >>> from pyspark.sql import SQLContext
+            >>> sqlContext = SQLContext(sc)
+    -> Import a library to convert an RDD to a SchemaRDD
+        -> Scala only: import sqlContext.createSchemaRDD
+    -> SchemaRDD data sources:
+        -> Inferring the schema using reflection
+            -> The case class in Scala defines the schema of the table:
+                >>> case class Person(name: String, age: Int)
+            -> The arguments of the case class becomes the names of the columns
+            -> Create the RDD of the Person object
+                >>> val people = sc.textFile("examples/people.txt")
+                                 .map(_.split(","))
+                                 .map(p => Person(p(0), p(1).trim.toInt))
+            -> Register the RDD as a table
+                >>> people.registerTempTable("people")
+            -> Run SQL statements using the sql method provided by the SQLContext
+                >>> val teenagers = sqlContext.sql("SELECT name FROM people WHERE age >= 13 AND age <= 19")
+            -> The results of the queries are SchemaRDD, Normal RDD operations also work on them
+                >>> teenagers.map(t => "Name: " + t(0)).collect().foreach(println)
+        -> Programmatic interface
+            -> Use when you cannot define the case classes ahead of time
+            -> Create the RDD:
+                >>> val people = sc.textFile(...)
+            -> Three steps to create the SchemaRDD:
+                1. Create an RDD of ROws from the original RDD
+                    >>> val schemaString = "name age"
+                2. Create the schema represented by a StructType matching of the structure of the Rows in the RDD from step 1
+                    >>> val schema = StructType( schemaString.split(" ").map(fieldName => StructField(fieldName, StringType, true)))
+                3. Apply the schema to the RDD of Rows using the applySchema method.
+                    >>> val rowRDD = people.map(_.split(",")).map(p => Row(p(0), p(1).trim))
+                    >>> val peopleSchemaRDD = sqlContext.applySchema(rowRDD, schema)
+            -> Then register the peopleSchemaRDD as a table
+                >>> peopleSchemaRDD.registerTempTable("people")
+            -> Run the sql statements using the sql method
+                >>> val results = sqlContext.sql("SELECT name FROM people")
+                >>> results.map(t => "Name: " + t(0)).collect().foreach(println)
