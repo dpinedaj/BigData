@@ -1,0 +1,13 @@
+MLlib:
+    -> Common algorithm and utilities:
+        -> Classification
+        -> Regression
+        -> Clustering
+        -> Collaborative filtering
+        -> Dimensionality reduction
+
+GraphX:
+    -> GraphX for graph processing
+        -> Graphs and graph parallel computation
+        -> Social networks and language modeling
+        

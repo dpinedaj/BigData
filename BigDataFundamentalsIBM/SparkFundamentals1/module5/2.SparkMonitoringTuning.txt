@@ -1,0 +1,53 @@
+Spark monitoring:
+    Three ways to monitor:
+        -> Web UI:
+            - Port 4040
+            - Available for the duration of the application
+            - Contains the following information
+                - A list of scheduler stages and tasks
+                - Asummary of RDD sizes and memory usage
+                - Environmental information- Information about the running executors
+        -> Metrics:
+            - Based on the Coda Hale Metrics Library
+            - Report to a variety of sinks (HTTP, JMX, CSV)
+            - /conf/metrics.properties
+        -> External instrumentations
+            - Ganglia
+            - OS profiling tools (dstat, iostat, iotop)
+            - JVM utilities (jstack, jmap, jstat, jconsole)
+
+        -> Viewing the history (on Mesos or YARN): ./sbin/start-history-server.sh
+        -> Configure the history server to set
+            - Memory allocated
+            - JVM options
+            - Public address for the server
+            - Various properties
+
+Spark Tuning
+    -> Data serialization
+        - Java serialization
+        - Kyro serialization
+        - conf.set("spark.serializer", "org.apache.spark.serializar.KryoSerializer")
+    -> Memory tuning
+        - Amount of memory used by the objects
+            - Avoid Java features that add overhead
+            - Go with arrays or primitive types
+            - Avoid nested structures when possible
+        - Cost of accessing those objects
+            - Serialized RDD storage
+        - Overhead of garbage collection
+            - Analyze the garbage collection
+            - SPARK_JAVA_OPTS
+                - verbose: gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps to your SPARK_JAVA_OPTS
+
+    - Other considerations
+        - Level of parallelism
+            - Automatically set according to the file size
+            - Optional parameters such as SparkContext.textFile
+            - spark.default.parallelism
+            - 2-3 tasks per CPU core in the cluster
+        - Memory usage of reduce tasks
+            - OutOfMemoryError can be resolved by increasing the level of parallelism
+        - Broadcasting large variables
+        - Serialized size of each tasks are located on the master
+            - Tasks > 20 KB worth optimizing

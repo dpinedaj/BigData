@@ -1,0 +1,23 @@
+Spark Streaming
+    -> Receives live input data and divides into small batches which are processed
+        and returned as batches
+    -> DStream - Sequence of RDD
+    -> Receives data from:
+        -> Kafka
+        -> Flume
+        -> HDFS / S3
+        -> Kinesis
+        -> Twitter
+    -> Pushes data out to:
+        -> HDFS
+        -> Databases
+        -> Dashboard
+
+    -> Sliding window operations
+        -> Windowed computations
+            -> Window length
+            -> Sliding interval
+            -> reduceByKeyAndWindow
+
+
+        

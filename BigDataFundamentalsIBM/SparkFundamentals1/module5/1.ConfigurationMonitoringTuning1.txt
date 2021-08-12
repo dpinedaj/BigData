@@ -1,0 +1,16 @@
+Configuration:
+    -> Three locations for configuration:
+        -> Spark properties
+        -> Environment variables:
+            -> conf/spark-env.sh
+        -> Logging:
+            -> log4j.properties
+    -> Override default configuration directory (SPARK_HOME/conf)
+        -> SPARK_CONF_DIR
+            -> spark-defaults.conf
+            -> spark-env.sh
+            -> log4j.properties
+            -> etc.
+    -> Spark shell can be verbose:
+        -> To view ERRORS only, changed the INFO value to ERROR in the log4j.properties
+            -> $SPARK_HOME/conf/log4j.properties
